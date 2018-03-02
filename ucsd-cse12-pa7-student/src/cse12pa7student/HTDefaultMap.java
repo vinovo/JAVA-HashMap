@@ -4,14 +4,14 @@ import java.util.List;
 
 public class HTDefaultMap<K,V> implements DefaultMap<K,V> {
 
+	/* Fields */
 	private List<Pair<K,V>>[] buckets;
-	private int size;
-	private int collisions = 0;
-	private V defaultValue;
 
+	/* Constructor */
 	public HTDefaultMap (V defaultValue, int capacity, double loadFactor, int expansionFactor, Hasher<K> hasher) {
 	}
-	
+		
+	/* Fill in these methods */
 	@Override
 	public void set(K key, V value) {
 	}
