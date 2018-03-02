@@ -8,7 +8,7 @@ public class HTDefaultMap<K,V> implements DefaultMap<K,V> {
 	private List<Pair<K,V>>[] buckets;
 
 	/* Constructor */
-	public HTDefaultMap (V defaultValue, int capacity, double loadFactor, int expansionFactor, Hasher<K> hasher) {
+	public HTDefaultMap(V defaultValue, int startCapacity, double loadThreshold, int expansionFactor, Hasher<K> hasher){
 	}
 		
 	/* Fill in these methods */
