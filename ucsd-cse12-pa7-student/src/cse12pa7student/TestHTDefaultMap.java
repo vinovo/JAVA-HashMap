@@ -55,7 +55,7 @@ public class TestHTDefaultMap {
 		assertFalse(ht.containsKey(""));
 		ht.set("abc", 3);
 		assertFalse(ht.containsKey(null));
-		assertFalse(ht.containsKey("abcdefgh"));
+		assertFalse(ht.containsKey("abcdefgh!"));
 		for (int i = 65; i < 91; i++) {
 			ht.set((char) i + "", i);
 		}
