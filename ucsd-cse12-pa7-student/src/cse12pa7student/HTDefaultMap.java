@@ -40,7 +40,6 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 				buckets[hashCode] = new ArrayList<Pair<K, V>>();
 				buckets[hashCode].add(newPair);
 			} else {
-				this.totalCollisions++;
 				boolean found = false;
 				for (int i = 0; i < buckets[hashCode].size(); i++) {
 					// if the key already exists.
@@ -50,8 +49,10 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 						this.size--;
 					}
 				}
-				if (!found)
+				if (!found) {
 					buckets[hashCode].add(newPair);
+					this.totalCollisions++;
+				}
 			}
 			this.size++;
 			if (currentLoadFactor() >= loadThreshold)
