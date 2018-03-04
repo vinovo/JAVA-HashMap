@@ -116,9 +116,9 @@ public class TestHTDefaultMap {
 
 	@Test
 	public void testTotalCollisions() {
-		HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(null, 4, 1, 2, hasher);
+		HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(null, 2, 1, 2, hasher);
 		ht.set("aa", 2);
-		ht.set("abcdef", 4);
+		ht.set("abcdef", 6);
 		assertEquals(1, ht.totalCollisions());
 		ht.set("ad", 2);
 		assertEquals(2, ht.totalCollisions());
