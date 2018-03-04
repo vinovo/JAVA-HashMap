@@ -83,6 +83,8 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 	public boolean containsKey(K key) {
 		if (key == null)
 			return false;
+		if (size == 0)
+			return false;
 		int hashCode = hashToBuckets(key);
 		if (buckets[hashCode] == null)
 			return false;
@@ -130,10 +132,6 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 	}
 
 	public int totalCollisions() {
-		/*for (List<Pair<K,V>> lst : buckets){
-			if (lst != null && lst.size() > 0)
-				collisions += lst.size() - 1;
-		}*/
 		return this.totalCollisions;
 	}
 
