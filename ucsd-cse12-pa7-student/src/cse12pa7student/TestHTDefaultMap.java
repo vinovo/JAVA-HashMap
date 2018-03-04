@@ -131,8 +131,6 @@ public class TestHTDefaultMap {
 		//expecting rehash here
 		assertEquals(5, ht.totalCollisions());
 		ht.set("ae", 2);
-		// capacity is now 8, "abcdef" no longer collides with Strings of length
-		// 2
 		assertEquals(6, ht.totalCollisions());
 		ht.set("a", 100);
 		assertEquals(6, ht.totalCollisions());
