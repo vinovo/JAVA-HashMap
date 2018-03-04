@@ -10,7 +10,7 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 	private List<Pair<K, V>>[] buckets;
 	private V defaultValue;
 	private double loadThreshold;
-	private int capacity, size, expansionFactor;
+	private int capacity, size, expansionFactor, totalCollisions;
 	private Hasher<K> hasher;
 
 	/* Constructor */
@@ -25,6 +25,7 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 		this.hasher = hasher;
 		this.size = 0;
 		buckets = new List[startCapacity];
+		this.totalCollisions = 0;
 	}
 
 	/* Fill in these methods */
@@ -39,6 +40,7 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 				buckets[hashCode] = new ArrayList<Pair<K, V>>();
 				buckets[hashCode].add(newPair);
 			} else {
+				this.totalCollisions++;
 				boolean found = false;
 				for (int i = 0; i < buckets[hashCode].size(); i++) {
 					// if the key already exists.
@@ -128,12 +130,11 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 	}
 
 	public int totalCollisions() {
-		int collisions = 0;
-		for (List<Pair<K,V>> lst : buckets){
+		/*for (List<Pair<K,V>> lst : buckets){
 			if (lst != null && lst.size() > 0)
 				collisions += lst.size() - 1;
-		}
-		return collisions;
+		}*/
+		return this.totalCollisions;
 	}
 
 	public int currentCapacity() {
@@ -174,6 +175,8 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 					int hashCode = hashToBuckets(p.key);
 					if (newBuckets[hashCode] == null)
 						newBuckets[hashCode] = new ArrayList<Pair<K, V>>();
+					else
+						this.totalCollisions++;
 					newBuckets[hashCode].add(p);
 				}
 			}

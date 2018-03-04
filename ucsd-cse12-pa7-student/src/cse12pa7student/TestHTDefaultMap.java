@@ -119,18 +119,27 @@ public class TestHTDefaultMap {
 		HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(null, 4, 1, 2, hasher);
 		ht.set("aa", 2);
 		ht.set("abcdef", 6);
-		//assertEquals(1, ht.totalCollisions());
+		assertEquals(1, ht.totalCollisions());
 		ht.set("ad", 2);
-		//assertEquals(2, ht.totalCollisions());
-		ht.set("a", 1);
+		assertEquals(2, ht.totalCollisions());
+		ht.set("bc", 2);
+		//expecting rehash here
+		assertEquals(5, ht.totalCollisions());
+		ht.set("ae", 2);
 		// capacity is now 8, "abcdef" no longer collides with Strings of length
 		// 2
-		//assertEquals(3, ht.totalCollisions());
+		assertEquals(6, ht.totalCollisions());
 		ht.set("a", 100);
-		ht.set("b", 1);
-		assertEquals(4, ht.totalCollisions());
+		assertEquals(6, ht.totalCollisions());
+		ht.set("a", 1);
+		assertEquals(7, ht.totalCollisions());
+		ht.set("c", 1);
+		ht.set("d", 1);
+		//expecting rehash here. Before rehash, the total collisions should be 9
+		//during rehash, 5 collisions occur
+		assertEquals(14, ht.totalCollisions());
 	}
-
+	
 	@Test
 	public void currentCapacity() {
 		HTDefaultMap<String, Integer> ht1 = new HTDefaultMap<String, Integer>(null, 1, 0.7, 3, null);
