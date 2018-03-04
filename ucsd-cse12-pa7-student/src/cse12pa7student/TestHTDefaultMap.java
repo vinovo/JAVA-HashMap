@@ -125,10 +125,10 @@ public class TestHTDefaultMap {
 		ht.set("a", 1);
 		// capacity is now 8, "abcdef" no longer collides with Strings of length
 		// 2
-		assertEquals(1, ht.totalCollisions());
-		/*ht.set("a", 100);
+		//assertEquals(3, ht.totalCollisions());
+		ht.set("a", 100);
 		ht.set("b", 1);
-		assertEquals(4, ht.totalCollisions());*/
+		assertEquals(4, ht.totalCollisions());
 	}
 
 	@Test
