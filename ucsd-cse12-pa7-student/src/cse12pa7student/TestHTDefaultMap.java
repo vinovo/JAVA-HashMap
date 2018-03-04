@@ -116,19 +116,19 @@ public class TestHTDefaultMap {
 
 	@Test
 	public void testTotalCollisions() {
-		HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(null, 2, 1, 2, hasher);
+		HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(null, 4, 1, 2, hasher);
 		ht.set("aa", 2);
 		ht.set("abcdef", 6);
-		assertEquals(1, ht.totalCollisions());
-		ht.set("ad", 2);
 		assertEquals(2, ht.totalCollisions());
+		ht.set("ad", 2);
+		assertEquals(3, ht.totalCollisions());
 		ht.set("a", 1);
 		// capacity is now 8, "abcdef" no longer collides with Strings of length
 		// 2
-		assertEquals(1, ht.totalCollisions());
+		assertEquals(2, ht.totalCollisions());
 		ht.set("a", 100);
 		ht.set("b", 1);
-		assertEquals(2, ht.totalCollisions());
+		assertEquals(4, ht.totalCollisions());
 	}
 
 	@Test
