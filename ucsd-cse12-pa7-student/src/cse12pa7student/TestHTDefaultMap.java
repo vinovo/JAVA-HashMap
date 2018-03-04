@@ -51,8 +51,6 @@ public class TestHTDefaultMap {
 
 	@Test
 	public void testContainsKey() {
-		HTDefaultMap<String, Integer> empty = new HTDefaultMap<String, Integer>(null, 0, 0, 0, null);
-		assertFalse(empty.containsKey("a"));
 		HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(null, 4, 0.7, 3, null);
 		assertFalse(ht.containsKey(""));
 		ht.set("abc", 3);
