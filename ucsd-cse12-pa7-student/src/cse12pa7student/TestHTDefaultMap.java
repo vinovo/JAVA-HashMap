@@ -53,7 +53,8 @@ public class TestHTDefaultMap {
 	public void testContainsKey() {
 		HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(null, 4, 0.7, 3, null);
 		assertFalse(ht.containsKey(""));
-		assertFalse(ht.containsKey("abc"));
+		ht.set("abc", 3);
+		assertFalse(ht.containsKey("ab"));
 		for (int i = 65; i < 91; i++) {
 			ht.set((char) i + "", i);
 		}
