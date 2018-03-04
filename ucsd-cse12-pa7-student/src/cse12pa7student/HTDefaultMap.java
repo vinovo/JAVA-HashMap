@@ -157,9 +157,9 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 	private int hashToBuckets(K key) {
 		int hashCode;
 		if (hasher == null)
-			hashCode = key.hashCode();
+			hashCode = Math.abs(key.hashCode());
 		else
-			hashCode = hasher.hash(key);
+			hashCode = Math.abs(hasher.hash(key));
 		return hashCode % capacity;
 	}
 

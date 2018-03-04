@@ -178,7 +178,7 @@ public class TestHTDefaultMap {
 		// have been updated to 16*2
 		assertEquals(32, ht2.currentCapacity());
 		ht2.set("This PA", 31);
-		ht2.set("is hard", 32);
+		ht2.set("is hard!", 32);
 		assertEquals(64, ht2.currentCapacity());
 	}
 	
