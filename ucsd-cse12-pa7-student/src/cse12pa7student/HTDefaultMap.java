@@ -43,7 +43,12 @@ public class HTDefaultMap<K, V> implements DefaultMap<K, V> {
 				boolean found = false;
 				for (int i = 0; i < buckets[hashCode].size(); i++) {
 					// if the key already exists.
-					if (buckets[hashCode].get(i).key.equals(key)) {
+					boolean flag = false;
+					if (key instanceof Integer)
+						flag = buckets[hashCode].get(i).key == key;
+					else
+						flag = buckets[hashCode].get(i).key.equals(key);
+					if (flag) {
 						buckets[hashCode].set(i, newPair);
 						found = true;
 						this.size--;

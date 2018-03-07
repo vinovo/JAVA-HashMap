@@ -136,6 +136,7 @@ public class TestHTDefaultMap {
 		assertEquals(6, ht.totalCollisions());
 		ht.set("a", 1);
 		ht.set("a", 20);
+		//key overwriting does not count as collision.
 		assertEquals(6, ht.totalCollisions());
 		ht.set("c", 1);
 		ht.set("d", 1);
