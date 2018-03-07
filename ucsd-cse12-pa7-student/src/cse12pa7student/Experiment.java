@@ -15,7 +15,7 @@ public class Experiment {
 		}
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		System.out.println("expansionFactor,timeTaken");
 		for (int i = 2; i <= 11; i++) {
 			HTDefaultMap<String, Integer> ht = new HTDefaultMap<String, Integer>(0, 40, 0.66, i, null);
@@ -49,7 +49,7 @@ public class Experiment {
 			System.out.println(loadFactor + "," + ht.totalCollisions());
 		}
 
-	}
+	}*/
 
 	static class customHasher<K> implements Hasher<K> {
 		@Override
